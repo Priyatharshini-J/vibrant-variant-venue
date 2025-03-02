@@ -3,11 +3,13 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ShoppingBag, User, Search, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useCart } from '@/hooks/useCart';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { itemCount } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -89,9 +91,11 @@ const Navbar: React.FC = () => {
             </Link>
             <Link to="/cart" className="hover:text-primary/70 transition-colors relative">
               <ShoppingBag size={20} />
-              <span className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center bg-primary text-primary-foreground text-xs rounded-full">
-                3
-              </span>
+              {itemCount > 0 && (
+                <span className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center bg-primary text-primary-foreground text-xs rounded-full">
+                  {itemCount}
+                </span>
+              )}
             </Link>
           </div>
 
@@ -99,9 +103,11 @@ const Navbar: React.FC = () => {
           <div className="flex md:hidden items-center space-x-4">
             <Link to="/cart" className="relative">
               <ShoppingBag size={20} />
-              <span className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center bg-primary text-primary-foreground text-xs rounded-full">
-                3
-              </span>
+              {itemCount > 0 && (
+                <span className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center bg-primary text-primary-foreground text-xs rounded-full">
+                  {itemCount}
+                </span>
+              )}
             </Link>
             <button 
               className="text-primary" 
