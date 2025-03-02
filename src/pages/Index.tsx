@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import Navbar from '@/components/Layout/Navbar';
 import ImageGallery from '@/components/ProductPage/ImageGallery';
@@ -144,7 +143,7 @@ const reviews = [
 const reviewSummary = {
   avgRating: 4.6,
   totalReviews: 124,
-  ratingDistribution: [98, 15, 7, 3, 1]
+  ratingDistribution: [98, 15, 7, 3, 1] as [number, number, number, number, number]
 };
 
 const relatedProducts = [
