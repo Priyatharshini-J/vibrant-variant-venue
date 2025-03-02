@@ -1,12 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ShoppingBag, User, Search, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,8 +19,17 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const isActive = (path: string) => {
+    return location.pathname === path;
   };
 
   return (
@@ -43,10 +53,30 @@ const Navbar: React.FC = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8 items-center">
-            <Link to="/" className="btn-hover text-sm font-medium">Home</Link>
-            <Link to="/shop" className="btn-hover text-sm font-medium">Shop</Link>
-            <Link to="/collections" className="btn-hover text-sm font-medium">Collections</Link>
-            <Link to="/about" className="btn-hover text-sm font-medium">About</Link>
+            <Link 
+              to="/" 
+              className={cn("btn-hover text-sm font-medium", isActive('/') && "after:w-full")}
+            >
+              Home
+            </Link>
+            <Link 
+              to="/shop" 
+              className={cn("btn-hover text-sm font-medium", isActive('/shop') && "after:w-full")}
+            >
+              Shop
+            </Link>
+            <Link 
+              to="/collections" 
+              className={cn("btn-hover text-sm font-medium", isActive('/collections') && "after:w-full")}
+            >
+              Collections
+            </Link>
+            <Link 
+              to="/about" 
+              className={cn("btn-hover text-sm font-medium", isActive('/about') && "after:w-full")}
+            >
+              About
+            </Link>
           </div>
 
           {/* Desktop Navigation Icons */}
@@ -94,29 +124,37 @@ const Navbar: React.FC = () => {
         <div className="flex flex-col p-8 space-y-6">
           <Link 
             to="/" 
-            className="text-2xl font-medium py-2 border-b border-border"
-            onClick={() => setIsMobileMenuOpen(false)}
+            className={cn(
+              "text-2xl font-medium py-2 border-b border-border",
+              isActive('/') && "text-primary"
+            )}
           >
             Home
           </Link>
           <Link 
             to="/shop" 
-            className="text-2xl font-medium py-2 border-b border-border"
-            onClick={() => setIsMobileMenuOpen(false)}
+            className={cn(
+              "text-2xl font-medium py-2 border-b border-border",
+              isActive('/shop') && "text-primary"
+            )}
           >
             Shop
           </Link>
           <Link 
             to="/collections" 
-            className="text-2xl font-medium py-2 border-b border-border"
-            onClick={() => setIsMobileMenuOpen(false)}
+            className={cn(
+              "text-2xl font-medium py-2 border-b border-border",
+              isActive('/collections') && "text-primary"
+            )}
           >
             Collections
           </Link>
           <Link 
             to="/about" 
-            className="text-2xl font-medium py-2 border-b border-border"
-            onClick={() => setIsMobileMenuOpen(false)}
+            className={cn(
+              "text-2xl font-medium py-2 border-b border-border",
+              isActive('/about') && "text-primary"
+            )}
           >
             About
           </Link>
@@ -124,7 +162,6 @@ const Navbar: React.FC = () => {
             <Link 
               to="/search" 
               className="flex items-center space-x-2"
-              onClick={() => setIsMobileMenuOpen(false)}
             >
               <Search size={18} />
               <span>Search</span>
@@ -132,7 +169,6 @@ const Navbar: React.FC = () => {
             <Link 
               to="/account" 
               className="flex items-center space-x-2"
-              onClick={() => setIsMobileMenuOpen(false)}
             >
               <User size={18} />
               <span>Account</span>
