@@ -118,10 +118,11 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product, variants }) => {
         <div>
           <h3 className="font-medium mb-3">Color: {selectedColor && variants.colors.find(c => c.value === selectedColor)?.label}</h3>
           <VariantSelector
-            variants={variants.colors}
-            selected={selectedColor}
+            label="Color"
+            options={variants.colors}
+            selectedValue={selectedColor || ''}
             onChange={setSelectedColor}
-            type="color"
+            variant="color"
           />
         </div>
         
@@ -132,10 +133,11 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product, variants }) => {
             <button className="text-sm text-primary">Size Guide</button>
           </div>
           <VariantSelector
-            variants={variants.sizes}
-            selected={selectedSize}
+            label="Size"
+            options={variants.sizes}
+            selectedValue={selectedSize || ''}
             onChange={setSelectedSize}
-            type="size"
+            variant="size"
           />
         </div>
       </div>
