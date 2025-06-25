@@ -1,44 +1,28 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { cn } from "@/lib/utils";
+import { Heart, ShoppingBag } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { cn } from '@/lib/utils';
-import { Heart, ShoppingBag } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { toast } from 'sonner';
-
-interface ProductCardProps {
-  product: {
-    id: string;
-    name: string;
-    brand: string;
-    price: number;
-    originalPrice?: number;
-    images: { url: string; alt: string }[];
-    isNew?: boolean;
-    isSale?: boolean;
-    isLimitedEdition?: boolean;
-    rating?: number;
-    availableColors?: { hex: string; name: string }[];
-  };
-  size?: 'sm' | 'md' | 'lg';
-}
-
-const ProductCard = ({ product, size = 'md' }: ProductCardProps) => {
+const ProductCard = ({ product, size = "md" }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
-  
+
   const mainImage = product.images[0];
   const hoverImage = product.images[1] || product.images[0];
-  
-  const discountPercentage = product.originalPrice 
-    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) 
+
+  const discountPercentage = product.originalPrice
+    ? Math.round(
+        ((product.originalPrice - product.price) / product.originalPrice) * 100
+      )
     : 0;
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    toast('Added to cart', {
+    toast("Added to cart", {
       description: product.name,
     });
   };
@@ -46,15 +30,15 @@ const ProductCard = ({ product, size = 'md' }: ProductCardProps) => {
   const handleAddToWishlist = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    toast('Added to wishlist', {
+    toast("Added to wishlist", {
       description: product.name,
     });
   };
 
   const imageSizeClass = {
-    sm: 'h-48',
-    md: 'h-64',
-    lg: 'h-80',
+    sm: "h-48",
+    md: "h-64",
+    lg: "h-80",
   }[size];
 
   return (
@@ -65,17 +49,23 @@ const ProductCard = ({ product, size = 'md' }: ProductCardProps) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Product image */}
-      <div className={cn("relative w-full overflow-hidden rounded-lg mb-3", imageSizeClass)}>
+      <div
+        className={cn(
+          "relative w-full overflow-hidden rounded-lg mb-3",
+          imageSizeClass
+        )}
+      >
         {/* Loading placeholder */}
-        <div className={cn(
-          "absolute inset-0 bg-muted/20 transition-opacity duration-500",
-          imageLoaded ? "opacity-0" : "opacity-100"
-        )} />
-        
+        <div
+          className={cn(
+            "absolute inset-0 bg-muted/20 transition-opacity duration-500",
+            imageLoaded ? "opacity-0" : "opacity-100"
+          )}
+        />
+
         {/* Images */}
         <img
-          src={mainImage.url}
-          alt={mainImage.alt}
+          src={mainImage}
           className={cn(
             "absolute inset-0 w-full h-full object-cover transition-opacity duration-500 image-load-transition",
             isHovered ? "opacity-0" : "opacity-100",
@@ -85,8 +75,7 @@ const ProductCard = ({ product, size = 'md' }: ProductCardProps) => {
         />
         {hoverImage && (
           <img
-            src={hoverImage.url}
-            alt={hoverImage.alt}
+            src={hoverImage}
             className={cn(
               "absolute inset-0 w-full h-full object-cover transition-opacity duration-500",
               isHovered ? "opacity-100" : "opacity-0",
@@ -94,37 +83,51 @@ const ProductCard = ({ product, size = 'md' }: ProductCardProps) => {
             )}
           />
         )}
-        
+
         {/* Badges */}
         <div className="absolute top-2 left-2 flex flex-col gap-1 z-10">
           {product.isNew && (
-            <Badge variant="secondary" className="font-medium">New</Badge>
+            <Badge variant="secondary" className="font-medium">
+              New
+            </Badge>
           )}
           {product.isSale && discountPercentage > 0 && (
-            <Badge variant="destructive" className="font-medium">-{discountPercentage}%</Badge>
+            <Badge variant="destructive" className="font-medium">
+              -{discountPercentage}%
+            </Badge>
           )}
           {product.isLimitedEdition && (
-            <Badge variant="outline" className="backdrop-blur-sm bg-background/30 font-medium">Limited</Badge>
+            <Badge
+              variant="outline"
+              className="backdrop-blur-sm bg-background/30 font-medium"
+            >
+              Limited
+            </Badge>
           )}
         </div>
-        
+
         {/* Action buttons */}
-        <div className={cn(
-          "absolute inset-0 flex items-end justify-center p-3 bg-gradient-to-t from-background/70 via-background/20 to-transparent opacity-0 transition-opacity duration-300",
-          isHovered ? "opacity-100" : "opacity-0"
-        )}>
+        <div
+          className={cn(
+            "absolute inset-0 flex items-end justify-center p-3 bg-gradient-to-t from-background/70 via-background/20 to-transparent opacity-0 transition-opacity duration-300",
+            isHovered ? "opacity-100" : "opacity-0"
+          )}
+        >
           <div className="flex gap-2 w-full">
-            <Button 
-              variant="default" 
+            <Button
+              variant="default"
               size="sm"
               className="flex-1 group"
               onClick={handleAddToCart}
             >
-              <ShoppingBag size={16} className="mr-2 group-hover:scale-110 transition-transform" />
+              <ShoppingBag
+                size={16}
+                className="mr-2 group-hover:scale-110 transition-transform"
+              />
               Add to cart
             </Button>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               size="sm"
               className="bg-background/80 backdrop-blur-sm border-background/20 hover:bg-background"
               onClick={handleAddToWishlist}
@@ -134,7 +137,7 @@ const ProductCard = ({ product, size = 'md' }: ProductCardProps) => {
           </div>
         </div>
       </div>
-      
+
       {/* Product info */}
       <div className="space-y-1 px-1">
         <div className="text-sm text-muted-foreground">{product.brand}</div>
@@ -147,12 +150,12 @@ const ProductCard = ({ product, size = 'md' }: ProductCardProps) => {
             </span>
           )}
         </div>
-        
+
         {/* Available colors */}
         {product.availableColors && product.availableColors.length > 0 && (
           <div className="flex gap-1 pt-1">
             {product.availableColors.map((color, index) => (
-              <div 
+              <div
                 key={`${product.id}-color-${index}`}
                 className="h-3 w-3 rounded-full border border-border"
                 style={{ backgroundColor: color.hex }}
@@ -160,7 +163,9 @@ const ProductCard = ({ product, size = 'md' }: ProductCardProps) => {
               />
             ))}
             {product.availableColors.length > 4 && (
-              <div className="text-xs text-muted-foreground">+{product.availableColors.length - 4}</div>
+              <div className="text-xs text-muted-foreground">
+                +{product.availableColors.length - 4}
+              </div>
             )}
           </div>
         )}
