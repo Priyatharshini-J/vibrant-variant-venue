@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogMessage, setDialogMessage] = useState("");
+  const [isError, setIsError] = useState(false);
+
+  const validateEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const handleSubscribe = () => {
+    if (!validateEmail(email)) {
+      setDialogMessage("Invalid email address. Please enter a valid one.");
+      setIsError(true);
+    } else {
+      setDialogMessage("Thanks for joining our newsletter.");
+      setIsError(false);
+    }
+    setDialogOpen(true);
+  };
+
   return (
     <>
       <section className="py-16 px-6">
@@ -14,11 +34,36 @@ const Footer = () => {
             <input
               type="email"
               placeholder="Your email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             />
-            <button className="bg-primary text-primary-foreground h-10 px-4 py-2 rounded-md text-sm font-medium transition-colors hover:bg-primary/90">
+            <button
+              onClick={handleSubscribe}
+              className="bg-primary text-primary-foreground h-10 px-4 py-2 rounded-md text-sm font-medium transition-colors hover:bg-primary/90"
+            >
               Subscribe
             </button>
+            {dialogOpen && (
+              <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-30">
+                <div className="bg-white p-6 rounded-lg shadow-lg text-center max-w-sm w-full">
+                  <h2
+                    className={`text-lg font-semibold mb-2 ${
+                      isError ? "text-red-600" : "text-gray-700"
+                    }`}
+                  >
+                    {isError ? "Error" : "You're Subscribed!"}
+                  </h2>
+                  <p className="text-muted-foreground">{dialogMessage}</p>
+                  <button
+                    onClick={() => setDialogOpen(false)}
+                    className="mt-4 bg-primary text-white px-4 py-2 rounded hover:bg-primary/90 transition"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
