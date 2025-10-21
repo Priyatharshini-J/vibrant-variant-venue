@@ -20,3 +20,4 @@ This project is built with .
 - AppSail
 - Slate
 - Datastore
+- Public Stratus bucket
