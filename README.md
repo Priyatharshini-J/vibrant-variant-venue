@@ -1,4 +1,4 @@
-# Welcome to your vibrant-variant venue project
+# Welcome to your vibrant-variant venue backend project
 
 ## Project info
 

@@ -1,0 +1,591 @@
+{
+  "name" : "project-template",
+  "version" : "1.0.0",
+  "parameters" : { },
+  "components" : {
+    "Circuits" : [ ],
+    "Pipelines" : [ ],
+    "ApplicationAlerts" : [ ],
+    "Add-onServices" : [ ],
+    "WebClient" : [ ],
+    "Cron" : [ ],
+    "SchedulingJobpool" : [ ],
+    "Filestore" : [ ],
+    "Mail" : [ ],
+    "Zia" : [ ],
+    "NoSql" : [ ],
+    "Datastore" : [ {
+      "type" : "table",
+      "name" : "vibrantOrders",
+      "properties" : {
+        "table_name" : "vibrantOrders"
+      },
+      "dependsOn" : [ ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantOrders-Orders",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 2,
+        "column_name" : "Orders",
+        "data_type" : "text",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantOrders",
+        "table_name" : "vibrantOrders",
+        "max_length" : 10000
+      },
+      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantOrders-Address",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 2,
+        "column_name" : "Address",
+        "data_type" : "text",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantOrders",
+        "table_name" : "vibrantOrders",
+        "max_length" : 10000
+      },
+      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantOrders-Total",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 4,
+        "column_name" : "Total",
+        "data_type" : "double",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantOrders",
+        "table_name" : "vibrantOrders",
+        "max_length" : 15
+      },
+      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantOrders-userId",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 2,
+        "column_name" : "userId",
+        "data_type" : "text",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantOrders",
+        "table_name" : "vibrantOrders",
+        "max_length" : 10000
+      },
+      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantOrders-Phone",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 2,
+        "column_name" : "Phone",
+        "data_type" : "text",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantOrders",
+        "table_name" : "vibrantOrders",
+        "max_length" : 10000
+      },
+      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
+    }, {
+      "type" : "tableScope",
+      "name" : "vibrantOrders-App Administrator",
+      "properties" : {
+        "role_name" : "App Administrator",
+        "table_scope" : "GLOBAL",
+        "type" : "App Administrator",
+        "table_name" : "vibrantOrders"
+      },
+      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
+    }, {
+      "type" : "tableScope",
+      "name" : "vibrantOrders-App User",
+      "properties" : {
+        "role_name" : "App User",
+        "table_scope" : "GLOBAL",
+        "type" : "App User",
+        "table_name" : "vibrantOrders"
+      },
+      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
+    }, {
+      "type" : "tablePermission",
+      "name" : "vibrantOrders-App Administrator",
+      "properties" : {
+        "role_name" : "App Administrator",
+        "type" : "App Administrator",
+        "table_permissions" : [ "SELECT", "UPDATE", "INSERT", "DELETE" ],
+        "table_name" : "vibrantOrders"
+      },
+      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
+    }, {
+      "type" : "tablePermission",
+      "name" : "vibrantOrders-App User",
+      "properties" : {
+        "role_name" : "App User",
+        "type" : "App User",
+        "table_permissions" : [ "SELECT" ],
+        "table_name" : "vibrantOrders"
+      },
+      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
+    }, {
+      "type" : "table",
+      "name" : "vibrantProducts",
+      "properties" : {
+        "table_name" : "vibrantProducts"
+      },
+      "dependsOn" : [ ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantProducts-id",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 2,
+        "column_name" : "id",
+        "data_type" : "int",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantProducts",
+        "table_name" : "vibrantProducts",
+        "max_length" : 10
+      },
+      "dependsOn" : [ "Datastore.table.vibrantProducts" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantProducts-name",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 2,
+        "column_name" : "name",
+        "data_type" : "text",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantProducts",
+        "table_name" : "vibrantProducts",
+        "max_length" : 10000
+      },
+      "dependsOn" : [ "Datastore.table.vibrantProducts" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantProducts-brand",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 2,
+        "column_name" : "brand",
+        "data_type" : "text",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantProducts",
+        "table_name" : "vibrantProducts",
+        "max_length" : 10000
+      },
+      "dependsOn" : [ "Datastore.table.vibrantProducts" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantProducts-price",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 4,
+        "column_name" : "price",
+        "data_type" : "double",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantProducts",
+        "table_name" : "vibrantProducts",
+        "max_length" : 15
+      },
+      "dependsOn" : [ "Datastore.table.vibrantProducts" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantProducts-originalPrice",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 4,
+        "column_name" : "originalPrice",
+        "data_type" : "double",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantProducts",
+        "table_name" : "vibrantProducts",
+        "max_length" : 15
+      },
+      "dependsOn" : [ "Datastore.table.vibrantProducts" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantProducts-description",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 2,
+        "column_name" : "description",
+        "data_type" : "text",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantProducts",
+        "table_name" : "vibrantProducts",
+        "max_length" : 10000
+      },
+      "dependsOn" : [ "Datastore.table.vibrantProducts" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantProducts-details",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 2,
+        "column_name" : "details",
+        "data_type" : "text",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantProducts",
+        "table_name" : "vibrantProducts",
+        "max_length" : 10000
+      },
+      "dependsOn" : [ "Datastore.table.vibrantProducts" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantProducts-rating",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 4,
+        "column_name" : "rating",
+        "data_type" : "double",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantProducts",
+        "table_name" : "vibrantProducts",
+        "max_length" : 15
+      },
+      "dependsOn" : [ "Datastore.table.vibrantProducts" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantProducts-reviewCount",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 2,
+        "column_name" : "reviewCount",
+        "data_type" : "int",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantProducts",
+        "table_name" : "vibrantProducts",
+        "max_length" : 10
+      },
+      "dependsOn" : [ "Datastore.table.vibrantProducts" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantProducts-isNew",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 2,
+        "column_name" : "isNew",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "default_value" : "true",
+        "table_id" : "vibrantProducts",
+        "table_name" : "vibrantProducts",
+        "data_type" : "boolean",
+        "search_index_enabled" : false,
+        "max_length" : 50
+      },
+      "dependsOn" : [ "Datastore.table.vibrantProducts" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantProducts-isSale",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 2,
+        "column_name" : "isSale",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "default_value" : "true",
+        "table_id" : "vibrantProducts",
+        "table_name" : "vibrantProducts",
+        "data_type" : "boolean",
+        "search_index_enabled" : false,
+        "max_length" : 50
+      },
+      "dependsOn" : [ "Datastore.table.vibrantProducts" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantProducts-images",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 2,
+        "column_name" : "images",
+        "data_type" : "text",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantProducts",
+        "table_name" : "vibrantProducts",
+        "max_length" : 10000
+      },
+      "dependsOn" : [ "Datastore.table.vibrantProducts" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantProducts-availableColors",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 2,
+        "column_name" : "availableColors",
+        "data_type" : "text",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantProducts",
+        "table_name" : "vibrantProducts",
+        "max_length" : 10000
+      },
+      "dependsOn" : [ "Datastore.table.vibrantProducts" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantProducts-availableSizes",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 2,
+        "column_name" : "availableSizes",
+        "data_type" : "text",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantProducts",
+        "table_name" : "vibrantProducts",
+        "max_length" : 10000
+      },
+      "dependsOn" : [ "Datastore.table.vibrantProducts" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantProducts-relatedProducts",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 2,
+        "column_name" : "relatedProducts",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "default_value" : "false",
+        "table_id" : "vibrantProducts",
+        "table_name" : "vibrantProducts",
+        "data_type" : "boolean",
+        "search_index_enabled" : false,
+        "max_length" : 50
+      },
+      "dependsOn" : [ "Datastore.table.vibrantProducts" ]
+    }, {
+      "type" : "tableScope",
+      "name" : "vibrantProducts-App Administrator",
+      "properties" : {
+        "role_name" : "App Administrator",
+        "table_scope" : "GLOBAL",
+        "type" : "App Administrator",
+        "table_name" : "vibrantProducts"
+      },
+      "dependsOn" : [ "Datastore.table.vibrantProducts" ]
+    }, {
+      "type" : "tableScope",
+      "name" : "vibrantProducts-App User",
+      "properties" : {
+        "role_name" : "App User",
+        "table_scope" : "GLOBAL",
+        "type" : "App User",
+        "table_name" : "vibrantProducts"
+      },
+      "dependsOn" : [ "Datastore.table.vibrantProducts" ]
+    }, {
+      "type" : "tablePermission",
+      "name" : "vibrantProducts-App Administrator",
+      "properties" : {
+        "role_name" : "App Administrator",
+        "type" : "App Administrator",
+        "table_permissions" : [ "SELECT", "UPDATE", "INSERT", "DELETE" ],
+        "table_name" : "vibrantProducts"
+      },
+      "dependsOn" : [ "Datastore.table.vibrantProducts" ]
+    }, {
+      "type" : "tablePermission",
+      "name" : "vibrantProducts-App User",
+      "properties" : {
+        "role_name" : "App User",
+        "type" : "App User",
+        "table_permissions" : [ "SELECT" ],
+        "table_name" : "vibrantProducts"
+      },
+      "dependsOn" : [ "Datastore.table.vibrantProducts" ]
+    }],
+    "Authentication" : [ {
+      "type" : "emailTemplates",
+      "name" : "1",
+      "properties" : {
+        "subject" : "Welcome to %APP_NAME%",
+        "template_type" : 1,
+        "message" : "<p>Hello %FIRST_NAME% %LAST_NAME%,</p>\n<p>You have been invited to join %APP_NAME%. You can access the app from this link:</p>\n<p><a href='%LINK%'>%LINK%</a></p>\n<p>You are assigned to the role %ROLE_NAME% in this app.</p>\n<p>If you didn’t ask to join the application or if you think this was a mistake, you can ignore this email.</p>\n<p>Thanks,</p>\n<p>%APP_NAME% team</p>\n"
+      },
+      "dependsOn" : [ ]
+    }, {
+      "type" : "emailTemplates",
+      "name" : "2",
+      "properties" : {
+        "subject" : "Password Reset for %APP_NAME%",
+        "template_type" : 2,
+        "message" : "<p>Hello %FIRST_NAME% %LAST_NAME%,</p>\n<p>Follow this link to reset your %APP_NAME% password for your %EMAIL% account.</p>\n<p><a href='%LINK%'>%LINK%</a></p>\n<p>If you didn’t ask to reset your password, you can ignore this email.</p>\n<p>Thanks,</p>\n<p>Your %APP_NAME% team</p>"
+      },
+      "dependsOn" : [ ]
+    }, {
+      "type" : "emailTemplates",
+      "name" : "3",
+      "properties" : {
+        "subject" : "OTP verification for %APP_NAME%",
+        "template_type" : 3,
+        "message" : "<p>Hello %FIRST_NAME% %LAST_NAME%,</p>\n<p>Please use the following one-time password to reset your %APP_NAME% password.</p>\n<p>%OTP_VALIDITY_TEXT%</p>\n<p style=\"font-size: larger;\"><b>%OTP%</b></p>\n<p>If you didn’t ask to reset your password, you can ignore this email.</p>\n<p>Thanks,</p>\n<p>Your %APP_NAME% team</p>"
+      },
+      "dependsOn" : [ ]
+    }, {
+      "type" : "roles",
+      "name" : "App Administrator",
+      "properties" : {
+        "role_name" : "App Administrator",
+        "description" : "Admin Role for the application",
+        "type" : "App Administrator",
+        "is_default" : false
+      },
+      "dependsOn" : [ "Authentication.roles.App User" ]
+    }, {
+      "type" : "roles",
+      "name" : "App User",
+      "properties" : {
+        "role_name" : "App User",
+        "description" : "User Role for the application",
+        "type" : "App User",
+        "is_default" : true
+      },
+      "dependsOn" : [ ]
+    }, {
+      "type" : "SignupConfiguration",
+      "name" : "signup-configuration",
+      "properties" : {
+        "app_account_meta" : {
+          "limit" : 1000,
+          "type" : 0
+        },
+        "custom_validation" : false,
+        "public_signup" : true,
+        "url_preference" : 0,
+        "status" : {
+          "embedded_auth" : false,
+          "third_party_auth" : false,
+          "hosted_auth" : true
+        }
+      },
+      "dependsOn" : [ ]
+    }, {
+      "type" : "HostedLogin",
+      "name" : "hosted-login",
+      "properties" : {
+        "config" : {
+          "is_logo_present" : false,
+          "company_name" : "",
+          "colors" : {
+            "background_color" : "#dce7ff",
+            "primary_color" : "#0059e9"
+          }
+        }
+      },
+      "dependsOn" : [ ]
+    }, {
+      "type" : "AuthorizedDomains",
+      "name" : "estatify.onslate.com",
+      "properties" : {
+        "cors" : true,
+        "domain" : "estatify.onslate.com",
+        "iframe" : true
+      },
+      "dependsOn" : [ ]
+    }, {
+      "type" : "SignInMethod",
+      "name" : "Zoho",
+      "properties" : {
+        "is_enabled" : true,
+        "auth_type" : "Zoho",
+        "scopes" : [ ],
+        "client_name" : "SlateTemplateApps"
+      },
+      "dependsOn" : [ ]
+    } ],
+    "AppSail" : [ {
+      "type" : "appsail",
+      "name" : "routes-handler",
+      "properties" : {
+        "stack" : "node18",
+        "code" : {
+          "path" : "appsail/routes-handler.zip"
+        },
+        "configuration" : {
+          "startup_command" : "node index.js",
+          "environment" : { },
+          "memory" : 256,
+          "catalyst_auth" : true,
+          "login_redirect" : "/"
+        },
+        "type" : 0,
+        "name" : "routes-handler",
+        "status" : true
+      },
+      "dependsOn" : [ ]
+    } ],
+    "SecurityRules" : [ {
+      "type" : "rules",
+      "name" : "security-rules",
+      "properties" : {
+        "advancedio" : {
+          "estatify_routes_handler" : [ {
+            ".*" : {
+              "methods" : [ "GET", "POST", "DELETE", "PUT", "PATCH" ],
+              "authentication" : "optional"
+            }
+          } ]
+        }
+      },
+      "dependsOn" : [ ]
+    } ],
+    "EventListeners" : [ {
+      "type" : "listeners",
+      "name" : "Default",
+      "properties" : {
+        "name" : "Default",
+        "description" : "Associates events in Catalyst components, such as a Data Store insertion or a File Store upload, with target event functions or circuits ",
+        "type" : "System",
+        "status" : "Enabled"
+      },
+      "dependsOn" : [ ]
+    } ],
+    "SchedulingCron" : [ ],
+    "Cache" : [ {
+      "type" : "segment",
+      "name" : "Default",
+      "properties" : {
+        "segment_name" : "Default"
+      },
+      "dependsOn" : [ ]
+    } ]
+  }
+}
