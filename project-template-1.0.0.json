@@ -6,6 +6,8 @@
     "Circuits" : [ ],
     "Pipelines" : [ ],
     "ApplicationAlerts" : [ ],
+    "Stratus" : [ ],
+    "Functions" : [ ],
     "Add-onServices" : [ ],
     "WebClient" : [ ],
     "Cron" : [ ],
@@ -14,134 +16,7 @@
     "Mail" : [ ],
     "Zia" : [ ],
     "NoSql" : [ ],
-    "Datastore" : [ {
-      "type" : "table",
-      "name" : "vibrantOrders",
-      "properties" : {
-        "table_name" : "vibrantOrders"
-      },
-      "dependsOn" : [ ]
-    }, {
-      "type" : "column",
-      "name" : "vibrantOrders-Orders",
-      "properties" : {
-        "audit_consent" : false,
-        "decimal_digits" : 2,
-        "column_name" : "Orders",
-        "data_type" : "text",
-        "is_unique" : false,
-        "is_mandatory" : false,
-        "search_index_enabled" : false,
-        "table_id" : "vibrantOrders",
-        "table_name" : "vibrantOrders",
-        "max_length" : 10000
-      },
-      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
-    }, {
-      "type" : "column",
-      "name" : "vibrantOrders-Address",
-      "properties" : {
-        "audit_consent" : false,
-        "decimal_digits" : 2,
-        "column_name" : "Address",
-        "data_type" : "text",
-        "is_unique" : false,
-        "is_mandatory" : false,
-        "search_index_enabled" : false,
-        "table_id" : "vibrantOrders",
-        "table_name" : "vibrantOrders",
-        "max_length" : 10000
-      },
-      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
-    }, {
-      "type" : "column",
-      "name" : "vibrantOrders-Total",
-      "properties" : {
-        "audit_consent" : false,
-        "decimal_digits" : 4,
-        "column_name" : "Total",
-        "data_type" : "double",
-        "is_unique" : false,
-        "is_mandatory" : false,
-        "search_index_enabled" : false,
-        "table_id" : "vibrantOrders",
-        "table_name" : "vibrantOrders",
-        "max_length" : 15
-      },
-      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
-    }, {
-      "type" : "column",
-      "name" : "vibrantOrders-userId",
-      "properties" : {
-        "audit_consent" : false,
-        "decimal_digits" : 2,
-        "column_name" : "userId",
-        "data_type" : "text",
-        "is_unique" : false,
-        "is_mandatory" : false,
-        "search_index_enabled" : false,
-        "table_id" : "vibrantOrders",
-        "table_name" : "vibrantOrders",
-        "max_length" : 10000
-      },
-      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
-    }, {
-      "type" : "column",
-      "name" : "vibrantOrders-Phone",
-      "properties" : {
-        "audit_consent" : false,
-        "decimal_digits" : 2,
-        "column_name" : "Phone",
-        "data_type" : "text",
-        "is_unique" : false,
-        "is_mandatory" : false,
-        "search_index_enabled" : false,
-        "table_id" : "vibrantOrders",
-        "table_name" : "vibrantOrders",
-        "max_length" : 10000
-      },
-      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
-    }, {
-      "type" : "tableScope",
-      "name" : "vibrantOrders-App Administrator",
-      "properties" : {
-        "role_name" : "App Administrator",
-        "table_scope" : "GLOBAL",
-        "type" : "App Administrator",
-        "table_name" : "vibrantOrders"
-      },
-      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
-    }, {
-      "type" : "tableScope",
-      "name" : "vibrantOrders-App User",
-      "properties" : {
-        "role_name" : "App User",
-        "table_scope" : "GLOBAL",
-        "type" : "App User",
-        "table_name" : "vibrantOrders"
-      },
-      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
-    }, {
-      "type" : "tablePermission",
-      "name" : "vibrantOrders-App Administrator",
-      "properties" : {
-        "role_name" : "App Administrator",
-        "type" : "App Administrator",
-        "table_permissions" : [ "SELECT", "UPDATE", "INSERT", "DELETE" ],
-        "table_name" : "vibrantOrders"
-      },
-      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
-    }, {
-      "type" : "tablePermission",
-      "name" : "vibrantOrders-App User",
-      "properties" : {
-        "role_name" : "App User",
-        "type" : "App User",
-        "table_permissions" : [ "SELECT" ],
-        "table_name" : "vibrantOrders"
-      },
-      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
-    }, {
+    "Datastore" : [  {
       "type" : "table",
       "name" : "vibrantProducts",
       "properties" : {
@@ -427,11 +302,138 @@
       "properties" : {
         "role_name" : "App User",
         "type" : "App User",
-        "table_permissions" : [ "SELECT" ],
+        "table_permissions" : [ "SELECT", "UPDATE", "INSERT", "DELETE" ],
         "table_name" : "vibrantProducts"
       },
       "dependsOn" : [ "Datastore.table.vibrantProducts" ]
-    }],
+    }, {
+      "type" : "table",
+      "name" : "vibrantOrders",
+      "properties" : {
+        "table_name" : "vibrantOrders"
+      },
+      "dependsOn" : [ ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantOrders-Orders",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 2,
+        "column_name" : "Orders",
+        "data_type" : "text",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantOrders",
+        "table_name" : "vibrantOrders",
+        "max_length" : 10000
+      },
+      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantOrders-Address",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 2,
+        "column_name" : "Address",
+        "data_type" : "text",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantOrders",
+        "table_name" : "vibrantOrders",
+        "max_length" : 10000
+      },
+      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantOrders-Total",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 4,
+        "column_name" : "Total",
+        "data_type" : "double",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantOrders",
+        "table_name" : "vibrantOrders",
+        "max_length" : 15
+      },
+      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantOrders-userId",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 2,
+        "column_name" : "userId",
+        "data_type" : "text",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantOrders",
+        "table_name" : "vibrantOrders",
+        "max_length" : 10000
+      },
+      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
+    }, {
+      "type" : "column",
+      "name" : "vibrantOrders-Phone",
+      "properties" : {
+        "audit_consent" : false,
+        "decimal_digits" : 2,
+        "column_name" : "Phone",
+        "data_type" : "text",
+        "is_unique" : false,
+        "is_mandatory" : false,
+        "search_index_enabled" : false,
+        "table_id" : "vibrantOrders",
+        "table_name" : "vibrantOrders",
+        "max_length" : 10000
+      },
+      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
+    }, {
+      "type" : "tableScope",
+      "name" : "vibrantOrders-App Administrator",
+      "properties" : {
+        "role_name" : "App Administrator",
+        "table_scope" : "GLOBAL",
+        "type" : "App Administrator",
+        "table_name" : "vibrantOrders"
+      },
+      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
+    }, {
+      "type" : "tableScope",
+      "name" : "vibrantOrders-App User",
+      "properties" : {
+        "role_name" : "App User",
+        "table_scope" : "GLOBAL",
+        "type" : "App User",
+        "table_name" : "vibrantOrders"
+      },
+      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
+    }, {
+      "type" : "tablePermission",
+      "name" : "vibrantOrders-App Administrator",
+      "properties" : {
+        "role_name" : "App Administrator",
+        "type" : "App Administrator",
+        "table_permissions" : [ "SELECT", "UPDATE", "INSERT", "DELETE" ],
+        "table_name" : "vibrantOrders"
+      },
+      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
+    }, {
+      "type" : "tablePermission",
+      "name" : "vibrantOrders-App User",
+      "properties" : {
+        "role_name" : "App User",
+        "type" : "App User",
+        "table_permissions" : [ "SELECT", "UPDATE", "INSERT", "DELETE" ],
+        "table_name" : "vibrantOrders"
+      },
+      "dependsOn" : [ "Datastore.table.vibrantOrders" ]
+    } ],
     "Authentication" : [ {
       "type" : "emailTemplates",
       "name" : "1",
@@ -505,18 +507,27 @@
           "is_logo_present" : false,
           "company_name" : "",
           "colors" : {
-            "background_color" : "#dce7ff",
-            "primary_color" : "#0059e9"
+            "background_color" : "#f3f4f6",
+            "primary_color" : "#4b5563"
           }
         }
       },
       "dependsOn" : [ ]
     }, {
       "type" : "AuthorizedDomains",
-      "name" : "estatify.onslate.com",
+      "name" : "vibrant-variant-venue.onslate.com",
       "properties" : {
         "cors" : true,
-        "domain" : "estatify.onslate.com",
+        "domain" : "vibrant-variant-venue.onslate.com",
+        "iframe" : true
+      },
+      "dependsOn" : [ ]
+    }, {
+      "type" : "AuthorizedDomains",
+      "name" : "personal-finance.onslate.com",
+      "properties" : {
+        "cors" : true,
+        "domain" : "personal-finance.onslate.com",
         "iframe" : true
       },
       "dependsOn" : [ ]
@@ -527,17 +538,17 @@
         "is_enabled" : true,
         "auth_type" : "Zoho",
         "scopes" : [ ],
-        "client_name" : "SlateTemplateApps"
+        "client_name" : "slate-template-apps"
       },
       "dependsOn" : [ ]
     } ],
-    "AppSail" : [ {
+    "AppSail" : [{
       "type" : "appsail",
-      "name" : "routes-handler",
+      "name" : "vibrant-variant-venue-routes-handler",
       "properties" : {
         "stack" : "node18",
         "code" : {
-          "path" : "appsail/routes-handler.zip"
+          "path" : "appsail/vibrant-variant-venue-routes-handler.zip"
         },
         "configuration" : {
           "startup_command" : "node index.js",
@@ -547,26 +558,12 @@
           "login_redirect" : "/"
         },
         "type" : 0,
-        "name" : "routes-handler",
+        "name" : "vibrant-variant-venue-routes-handler",
         "status" : true
       },
       "dependsOn" : [ ]
     } ],
-    "SecurityRules" : [ {
-      "type" : "rules",
-      "name" : "security-rules",
-      "properties" : {
-        "advancedio" : {
-          "estatify_routes_handler" : [ {
-            ".*" : {
-              "methods" : [ "GET", "POST", "DELETE", "PUT", "PATCH" ],
-              "authentication" : "optional"
-            }
-          } ]
-        }
-      },
-      "dependsOn" : [ ]
-    } ],
+    "SecurityRules" : [ ],
     "EventListeners" : [ {
       "type" : "listeners",
       "name" : "Default",
