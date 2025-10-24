@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+.build
+.catalystrc
+.DS_Store
+.catalyst
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
